@@ -1,30 +1,41 @@
 package tree
 
-import "github.com/yxjorhs/leetcode/linklist"
+import (
+	"github.com/yxjorhs/leetcode/linklist"
+)
 
-// import "fmt"
+// Build 根据数组构建二叉树
+func Build(arr []*int) *Node {
+	if len(arr) == 0 {
+		return nil
+	}
 
-// Build 根据数组构建二叉树, -1作空节点
-func Build(arr []int) *Node {
 	nodeArr := []*Node{}
+	parent := 0  // 父节点下标
+	toward := -1 // -1:子节点在父节点的左边，1:子节点在父节点的右边
 
 	for i := 0; i < len(arr); i++ {
-		var newNode *Node
+		toward *= -1
 
-		if arr[i] != -1 {
-			newNode = &Node{arr[i], nil, nil}
+		if arr[i] == nil {
+			if i == 0 {
+				return nil
+			}
+			continue
 		}
 
-		nodeArr = append(nodeArr, newNode)
+		node := &Node{*arr[i], nil, nil}
+		nodeArr = append(nodeArr, node)
 
 		if i == 0 {
 			continue
 		}
 
-		if i%2 == 1 {
-			nodeArr[(i-1)/2].Left = newNode
+		if toward == -1 {
+			nodeArr[parent].Left = node
 		} else {
-			nodeArr[(i-2)/2].Right = newNode
+			nodeArr[parent].Right = node
+			parent++
 		}
 	}
 

@@ -6,16 +6,24 @@ func MinDepth(root *Node) int {
 		return 0
 	}
 
-	if root.Left == nil || root.Right == nil {
+	if root.Left == nil && root.Right == nil {
 		return 1
 	}
 
 	left := MinDepth(root.Left)
 	right := MinDepth(root.Right)
 
-	if left <= right {
-		return left
+	if left == 0 {
+		return right + 1
 	}
 
-	return right
+	if right == 0 {
+		return left + 1
+	}
+
+	if left <= right {
+		return left + 1
+	}
+
+	return right + 1
 }

@@ -22,16 +22,16 @@ func InorderTraversal(root *Node) []int {
 }
 
 // MorisTravelsal 莫里斯遍历
-func MorisTravelsal (root *Node) []int {
+func MorisTravelsal(root *Node) []int {
 	ret := []int{}
 
 	if root == nil {
 		return ret
 	}
 
-	for cur := root ;cur != nil;  {
+	for cur := root; cur != nil; {
 		// 没有左节点，此时可能处于根节点或者某个左子树的最右节点
-		if cur.Left == nil { 
+		if cur.Left == nil {
 			ret = append(ret, cur.Val)
 			cur = cur.Right // 进入右子树，或是利用返回路径回到根节点
 			continue
