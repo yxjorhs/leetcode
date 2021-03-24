@@ -1,11 +1,9 @@
-package tree_test
+package tree
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/yxjorhs/leetcode/tree"
 )
 
 func TestMinDepth(t *testing.T) {
@@ -16,9 +14,9 @@ func TestMinDepth(t *testing.T) {
 		treeBuildParams = append(treeBuildParams, &arr[i], nil)
 	}
 
-	tr := tree.Build(treeBuildParams)
+	tr := Build(treeBuildParams)
 
-	minDepth := tree.MinDepth(tr)
+	minDepth := MinDepth(tr)
 
 	assert.Equal(t, minDepth, 5)
 }

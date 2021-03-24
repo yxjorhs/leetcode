@@ -1,9 +1,7 @@
-package tree_test
+package tree
 
 import (
 	"testing"
-
-	"github.com/yxjorhs/leetcode/tree"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -16,7 +14,7 @@ func TestBuild(t *testing.T) {
 		treeBuildParams = append(treeBuildParams, &arr[i], nil)
 	}
 
-	tr := tree.Build(treeBuildParams)
+	tr := Build(treeBuildParams)
 
 	for i := 0; i < len(arr); i++ {
 		assert.Equal(t, tr.Val, arr[i])

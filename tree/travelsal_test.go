@@ -1,11 +1,9 @@
-package tree_test
+package tree
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-
-	"github.com/yxjorhs/leetcode/tree"
 )
 
 func TestInorderTraversal(t *testing.T) {
@@ -16,9 +14,9 @@ func TestInorderTraversal(t *testing.T) {
 		treeBuildParams = append(treeBuildParams, &arr[i], nil)
 	}
 
-	tr := tree.Build(treeBuildParams)
+	tr := Build(treeBuildParams)
 
-	res := tree.InorderTraversal(tr)
+	res := InorderTraversal(tr)
 
 	for i := 0; i < len(arr); i++ {
 		assert.Equal(t, res[i], arr[i])
