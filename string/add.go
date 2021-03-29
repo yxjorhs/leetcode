@@ -1,5 +1,9 @@
 package string
 
+import (
+	"strconv"
+)
+
 // Add 字符串相加
 func Add(num1 string, num2 string) string {
 	longer := num1
@@ -24,13 +28,13 @@ func Add(num1 string, num2 string) string {
 			sum += int(shorter[len(shorter)-1-i] - 48)
 		}
 
-		longer = longer[:len(longer)-1-i] + i2s(sum%10) + longer[len(longer)-i:]
+		longer = longer[:len(longer)-1-i] + strconv.Itoa(sum%10) + longer[len(longer)-i:]
 
 		incr = sum / 10
 	}
 
 	if incr > 0 {
-		longer = i2s(incr) + longer
+		longer = strconv.Itoa(incr) + longer
 	}
 
 	return longer

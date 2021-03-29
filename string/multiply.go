@@ -1,12 +1,18 @@
 package string
 
+import (
+	"strconv"
+)
+
 // Multiply 字符串相乘
 func Multiply(num1 string, num2 string) string {
 	// 当两个字符串的长度小于calLen时直接转为整数计算
 	calLen := 8
 
 	if len(num1) <= calLen && len(num2) <= calLen {
-		return i2s(s2i(num1) * s2i(num2))
+		v1, _ := strconv.Atoi(num1)
+		v2, _ := strconv.Atoi(num2)
+		return strconv.Itoa(v1 * v2)
 	}
 
 	ret := "0"
@@ -35,46 +41,6 @@ func Multiply(num1 string, num2 string) string {
 		}
 
 		zero += "00000000"
-	}
-
-	return ret
-}
-
-func s2i(s string) int {
-	dict := map[string]int{
-		"0": 0,
-		"1": 1,
-		"2": 2,
-		"3": 3,
-		"4": 4,
-		"5": 5,
-		"6": 6,
-		"7": 7,
-		"8": 8,
-		"9": 9,
-	}
-
-	ret := 0
-
-	for i := 0; i < len(s); i++ {
-		ret += dict[string(s[i])]
-
-		if i != len(s)-1 {
-			ret *= 10
-		}
-	}
-
-	return ret
-}
-
-func i2s(i int) string {
-	digits := "0123456789"
-	ret := string(digits[i%10])
-	i = i / 10
-
-	for i > 0 {
-		ret = string(digits[i%10]) + ret
-		i = i / 10
 	}
 
 	return ret
