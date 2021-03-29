@@ -8,5 +8,6 @@ import (
 
 func TestAdd(t *testing.T) {
 	assert.Equal(t, Add("123", "321"), "444")
+	assert.Equal(t, Add("000", "0"), "0")
 	assert.Equal(t, Add("1", "9"), "10")
 }

@@ -29,8 +29,6 @@ func Multiply(num1 string, num2 string) string {
 				v2 = v2[n2left:]
 			}
 
-			println("v1", v1, "v2", v2, "ret", ret)
-
 			ret = Add(ret, Multiply(v1, v2)+zero+zero2)
 
 			zero2 += "00000000"
