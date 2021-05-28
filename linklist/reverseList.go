@@ -1,11 +1,5 @@
 package linklist
 
-/*ListNode ListNode*/
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func reverseList(head *ListNode) *ListNode {
 	var last *ListNode = nil
 
