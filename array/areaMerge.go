@@ -5,7 +5,8 @@ var (
 		merge  int
 		before int
 		after  int
-	}{1, 2, 3}
+		contan int
+	}{1, 2, 3, 4}
 )
 
 /* 合并区间
@@ -41,6 +42,11 @@ func merge(areaArr *[][]int, area []int) {
 			continue
 		}
 
+		if isn == isNeedMergeResp.contan {
+			mergeCount++
+			break
+		}
+
 		if isn == isNeedMergeResp.before {
 			break
 		}
@@ -57,7 +63,15 @@ func merge(areaArr *[][]int, area []int) {
 
 	// 合并次数超过1，则i前面的mergeCount - 1个区间需要删除
 	if mergeCount > 1 {
-		(*areaArr) = append((*areaArr)[:i-(mergeCount-1)], (*areaArr)[i:]...)
+		rmStart := i - 1 - (mergeCount - 1)
+		rmEnd := i - 1
+
+		if rmStart == 0 {
+			*areaArr = (*areaArr)[rmEnd:]
+			return
+		}
+
+		(*areaArr) = append((*areaArr)[:rmStart], (*areaArr)[rmEnd:]...)
 		return
 	}
 
@@ -68,7 +82,7 @@ func merge(areaArr *[][]int, area []int) {
 			return
 		}
 
-		*areaArr = append(append((*areaArr)[:i], area), (*areaArr)[i:]...)
+		*areaArr = append((*areaArr)[:i], append([][]int{area}, (*areaArr)[i:]...)...)
 	}
 }
 
@@ -88,6 +102,7 @@ func max(a int, b int) int {
 	return b
 }
 
+/* 返回{dest}与{val}是否需要合并 */
 func isNeedMerge(dest []int, val []int) int {
 	if dest[1] < val[0] {
 		return isNeedMergeResp.after
@@ -95,6 +110,10 @@ func isNeedMerge(dest []int, val []int) int {
 
 	if dest[0] > val[1] {
 		return isNeedMergeResp.before
+	}
+
+	if dest[0] <= val[0] && dest[1] >= val[1] {
+		return isNeedMergeResp.contan
 	}
 
 	return isNeedMergeResp.merge
