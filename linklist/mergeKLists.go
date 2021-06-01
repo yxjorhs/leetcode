@@ -5,7 +5,7 @@ MergeKLists 合并多个递增链表
 分而治之，递归对每个链表两两合并
 时间复杂度 O(N*log(M)) N为链表元素总和, M为链表数
 */
-func MergeKLists(lists []*Node) *Node {
+func MergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 0 {
 		return nil
 	}
@@ -17,7 +17,7 @@ func MergeKLists(lists []*Node) *Node {
 	return merge(lists, 0, len(lists)-1)
 }
 
-func merge(lists []*Node, left int, right int) *Node {
+func merge(lists []*ListNode, left int, right int) *ListNode {
 	if left == right {
 		return lists[left]
 	}

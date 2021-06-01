@@ -21,8 +21,5 @@ func sortList(head *ListNode) *ListNode {
 	slow = slow.Next
 	temp.Next = nil
 
-	left := sortList(head)
-	right := sortList(slow)
-
-	return MergeTwoLists(left, right)
+	return MergeTwoLists(sortList(head), sortList(slow))
 }
