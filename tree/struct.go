@@ -1,8 +1,15 @@
 package tree
 
 // Node 树结点
-type Node struct{
-	Val int
-	Left *Node
+type Node struct {
+	Val   int
+	Left  *Node
 	Right *Node
+}
+
+/*TreeNode TreeNode*/
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
