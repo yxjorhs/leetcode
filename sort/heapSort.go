@@ -2,12 +2,12 @@ package sort
 
 func heapSort(nums []int) []int {
 	for i := len(nums) / 2; i >= 0; i-- {
-		siftDown(nums, i, 0, len(nums)-1)
+		siftDown(nums, i, len(nums)-1)
 	}
 
 	for right := len(nums) - 1; right > 0; right-- {
 		swap(nums, 0, right)
-		siftDown(nums, 0, 0, right-1)
+		siftDown(nums, 0, right-1)
 	}
 
 	return nums
@@ -17,10 +17,9 @@ func heapSort(nums []int) []int {
 func siftDown(
 	nums []int,
 	aim int, // 调节点
-	start int,
 	stop int,
 ) {
-	if aim < start || aim > stop {
+	if aim > stop {
 		return
 	}
 
@@ -39,7 +38,7 @@ func siftDown(
 		swap(nums, aim, exchange)
 	}
 
-	siftDown(nums, exchange, start, stop)
+	siftDown(nums, exchange, stop)
 }
 
 func swap(nums []int, a, b int) {

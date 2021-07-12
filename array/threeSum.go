@@ -1,6 +1,6 @@
 package array
 
-import "../sort"
+import "github.com/yxjorhs/leetcode/sort"
 
 /*
 ThreeSum 求3数之和等于0的三元集合
@@ -20,41 +20,41 @@ ThreeSum 求3数之和等于0的三元集合
 func ThreeSum(nums []int) [][]int {
 	ret := [][]int{}
 
-	nums = sort.QuickSort(nums, 0, len(nums) - 1)
+	nums = sort.QuickSort(nums, 0, len(nums)-1)
 
-	for i:= 0; i < len(nums); i++ {
+	for i := 0; i < len(nums); i++ {
 		if nums[i] > 0 {
 			break
 		}
 
-		if i > 0 && nums[i] == nums[i - 1] {
+		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
 
-		for left, right := i+1, len(nums) - 1; left < right; {
+		for left, right := i+1, len(nums)-1; left < right; {
 			sum := nums[left] + nums[i] + nums[right]
 
 			leftMove := false
 			rightMove := false
 
-			if (sum == 0) {
+			if sum == 0 {
 				ret = append(ret, []int{nums[left], nums[i], nums[right]})
 				leftMove = true
 				rightMove = true
 			}
 
-			if (sum < 0) {
+			if sum < 0 {
 				leftMove = true
 			}
 
-			if (sum > 0) {
+			if sum > 0 {
 				rightMove = true
 			}
 
 			if leftMove {
 				for left < right {
 					left++
-					if nums[left] != nums[left - 1] {
+					if nums[left] != nums[left-1] {
 						break
 					}
 				}
@@ -63,7 +63,7 @@ func ThreeSum(nums []int) [][]int {
 			if rightMove {
 				for left < right {
 					right--
-					if nums[right] != nums[right + 1] {
+					if nums[right] != nums[right+1] {
 						break
 					}
 				}

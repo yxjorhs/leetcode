@@ -1,6 +1,6 @@
 package array
 
-import "../sort"
+import "github.com/yxjorhs/leetcode/sort"
 
 /*
 FourSum 四数之和
