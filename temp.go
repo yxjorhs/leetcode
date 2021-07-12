@@ -38,8 +38,8 @@ func numToR(n int, r int) int {
 	return ret
 }
 
-// isHW 是否回文
-func isHW(n int) bool {
+// isPlalindrome 是否回文
+func isPlalindrome(n int) bool {
 	str := strconv.Itoa(n)
 	for i := 0; i < len(str)/2; i++ {
 		if str[i] != str[len(str)-1-i] {
